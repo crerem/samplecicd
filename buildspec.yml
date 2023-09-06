@@ -2,5 +2,7 @@ version: 0.2
 phases:
   build:
     commands:
+      - echo start build
       - sam build
-      - sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+      - echo start deploy
+      - sam deploy --s3-bucket $S3Bucket --stack-name $APP_NAME --capabilities CAPABILITY_IAM
