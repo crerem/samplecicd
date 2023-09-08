@@ -54,7 +54,7 @@ phases:
     on-failure: ABORT
     commands:
       - echo "Starting SAM packaging `date` in `pwd`"
-      - aws cloudformation package --template-file template.yaml --s3-bucket $BUILD_OUTPUT_BUCKET --output-template-file packaged.yaml
+      - aws cloudformation package --template-file template.yaml --s3-bucket $S3Bucket --output-template-file packaged-template.yml
     # finally:
     #   - command
     #   - command
@@ -77,7 +77,7 @@ phases:
 #     file-format: report-format
 artifacts: # https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.artifacts
   files:
-    - packaged.yaml
+    - packaged-template.yml
     # - location
   name: artifact-name
   discard-paths: yes
